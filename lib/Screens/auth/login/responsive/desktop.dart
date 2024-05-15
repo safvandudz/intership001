@@ -29,7 +29,11 @@ class LoginDesktop extends StatelessWidget {
                             fit: BoxFit.contain,
                           ),
                         ))),
-                Logfield(controller: controller.userNameController,keyboardType: TextInputType.text,obs: true,keyboardType1: TextInputType.text,controller1: controller.passwordController,)
+                Logfield(controller: controller.userNameController,keyboardType: TextInputType.text,onPressed: () {
+
+
+
+                },obs: true,keyboardType1: TextInputType.text,controller1: controller.passwordController,)
               ],
             ),
           ),

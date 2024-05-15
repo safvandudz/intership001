@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 class Logfield extends StatelessWidget {
   final TextEditingController controller;
   final TextEditingController controller1;
+  final VoidCallback onPressed;
   final String title;
   final String subtitle;
   final String button;
@@ -18,6 +19,7 @@ class Logfield extends StatelessWidget {
   const Logfield({
     Key? key,
     required this.controller,
+    required this.onPressed,
     required this.controller1,
     this.obs=false,
     this.title = 'Welcome Back!',
@@ -87,7 +89,7 @@ class Logfield extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 25,),
-                Button(button: button),
+                Button(button: button,onpressed: ,),
               ],
             ),
           ),
@@ -155,28 +157,31 @@ class TextField1 extends StatelessWidget {
 
 class Button extends StatelessWidget {
   final String button;
+  final VoidCallback onpressed;
 
   const Button({
-    Key? key,
+    Key? key,required this.onpressed,
     required this.button,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: double.maxFinite,
-      height: 54,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(6),
-        color: Color.fromRGBO(66, 95, 235, 1),
-      ),
-      child: Center(
-        child: Text(
-          button,
-          style: TextStyle(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-            fontSize: 20,
+    return GestureDetector(onTap: onpressed,
+      child: Container(
+        width: double.maxFinite,
+        height: 54,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(6),
+          color: Color.fromRGBO(66, 95, 235, 1),
+        ),
+        child: Center(
+          child: Text(
+            button,
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
           ),
         ),
       ),
