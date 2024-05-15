@@ -5,6 +5,7 @@ import 'package:intership01/Screens/Student/create/view.dart';
 import 'package:url_strategy/url_strategy.dart';
 
 import 'Screens/Student/List.dart';
+import 'Screens/auth/login/login.dart';
 import 'model/user.dart';
 import 'utils/validator.dart';
 
@@ -19,7 +20,7 @@ final GoRouter _router = GoRouter(
     GoRoute(
       path: '/students',
       builder: (BuildContext context, GoRouterState state) {
-        return const StudentsList();
+        return const Login();
       },
       routes: <RouteBase>[
         GoRoute(

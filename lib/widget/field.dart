@@ -5,6 +5,7 @@ class Fields extends StatelessWidget {
   final String labelText;
   final double size;
   final double h;
+  // final
 
   final TextEditingController controller;
   final TextInputType keyboardType;
