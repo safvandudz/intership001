@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intership01/Screens/auth/login/login_controller.dart';
+
+import '../../../repository/api/api.dart';
 
 class Logfield extends StatelessWidget {
-  final TextEditingController controller;
-  final TextEditingController controller1;
-  final VoidCallback onPressed;
+  final LoginController controller;
   final String title;
   final String subtitle;
   final String button;
@@ -14,13 +15,11 @@ class Logfield extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputType keyboardType1;
   final List<TextInputFormatter>? inputFormatters;
-  final String? Function(String?)? validator;
+    final String? Function(String?)? validator;
 
   const Logfield({
     Key? key,
     required this.controller,
-    required this.onPressed,
-    required this.controller1,
     this.obs=false,
     this.title = 'Welcome Back!',
     this.subtitle = 'Login your account',
@@ -58,7 +57,7 @@ class Logfield extends StatelessWidget {
                 TextField1(
                   labelText: 'Username/Email',
                   size: size,
-                  controller: controller,
+                  controller: controller.userNameController,
                   h: h,
                   pass: false,
                   keyboardType: keyboardType,
@@ -72,7 +71,7 @@ class Logfield extends StatelessWidget {
                   pass:obs ,
                   labelText: 'Password',
                   size: size,
-                  controller: controller1,
+                  controller: controller.passwordController,
                   h: h,
                   keyboardType: keyboardType1,
                   inputFormatters: inputFormatters,
@@ -89,7 +88,7 @@ class Logfield extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 25,),
-                Button(button: button,onpressed: ,),
+                Button(button: button,controller:controller,),
               ],
             ),
           ),
@@ -156,17 +155,22 @@ class TextField1 extends StatelessWidget {
 
 
 class Button extends StatelessWidget {
+  final LoginController controller;
   final String button;
-  final VoidCallback onpressed;
 
   const Button({
-    Key? key,required this.onpressed,
-    required this.button,
+    Key? key,
+    required this.button, required this.controller,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(onTap: onpressed,
+    return GestureDetector(onTap: () {
+
+
+      ApiController apiController = ApiController(controller: controller);
+      apiController.onInit();
+    },
       child: Container(
         width: double.maxFinite,
         height: 54,

@@ -6,5 +6,5 @@ class LoginController extends GetxController {
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
 
-
+////--->
 }

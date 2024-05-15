@@ -17,10 +17,14 @@ final GoRouter _router = GoRouter(
   navigatorKey: navigatorKey,
   initialLocation: '/students',
   routes: <RouteBase>[
+    GoRoute(path: '/login',builder: (context, state) {
+      return const Login();
+
+    },),
     GoRoute(
       path: '/students',
       builder: (BuildContext context, GoRouterState state) {
-        return const Login();
+        return const StudentsScreen();
       },
       routes: <RouteBase>[
         GoRoute(
