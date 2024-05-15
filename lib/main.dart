@@ -7,73 +7,13 @@ import 'package:url_strategy/url_strategy.dart';
 import 'Screens/Student/List.dart';
 import 'model/user.dart';
 import 'utils/validator.dart';
-final RxList<Map<String, dynamic>> items =<Map<String, dynamic>> [
-  ///MODEL
-  {
-    'name': 'Arshak KP',
-    'email': 'Arshak@gmail.com',
-    'id': 1524552,
-    'district': 'Kozhikode',
-    'phoneNo': '+91 7034665522',
-    'pin': 676122,
-    'country': 'India',
-  },
-  {
-    'name': 'Arshak KP',
-    'email': 'Arshak@gmail.com',
-    'id': 1524552,
-    'district': 'Kozhikode',
-    'phoneNo': '+91 7034665522',
-    'pin': 676122,
-    'country': 'India',
-  }, {
-    'name': 'Arshak KP',
-    'email': 'Arshak@gmail.com',
-    'id': 1524552,
-    'district': 'Kozhikode',
-    'phoneNo': '+91 7034665522',
-    'pin': 676122,
-    'country': 'India',
-  }, {
-    'name': 'Arshak KP',
-    'email': 'Arshak@gmail.com',
-    'id': 1524552,
-    'district': 'Kozhikode',
-    'phoneNo': '+91 7034665522',
-    'pin': 676122,
-    'country': 'India',
-  },
-  {
-    'name': 'Arshak KP',
-    'email': 'Arshak@gmail.com',
-    'id': 1524552,
-    'district': 'Kozhikode',
-    'phoneNo': '+91 7034665522',
-    'pin': 676122,
-    'country': 'India',
-  },{
-    'name': 'Arshak KP',
-    'email': 'Arshak@gmail.com',
-    'id': 1524552,
-    'district': 'Kozhikode',
-    'phoneNo': '+91 7034665522',
-    'pin': 676122,
-    'country': 'India',
-  },{
-    'name': 'Arshak KP',
-    'email': 'Arshak@gmail.com',
-    'id': 1524552,
-    'district': 'Kozhikode',
-    'phoneNo': '+91 7034665522',
-    'pin': 676122,
-    'country': 'India',
-  },
-].obs;
 
+GlobalKey<NavigatorState> navigatorKey= GlobalKey();
 final GoRouter _router = GoRouter(
-  redirect: (context, state) {
-
-  },
+  // redirect: (context, state) {
+  //
+  // },
+  navigatorKey: navigatorKey,
   initialLocation: '/students',
   routes: <RouteBase>[
     GoRoute(

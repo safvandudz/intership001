@@ -188,7 +188,7 @@ class StudentsDesktop extends StatelessWidget {
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () => controller.saveForm(context),
+                                onPressed: () => controller.onSubmit(),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue,
                                   minimumSize: Size(10, 60),
