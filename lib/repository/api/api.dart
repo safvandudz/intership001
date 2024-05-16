@@ -60,7 +60,8 @@ class ApiController extends GetxController {
       if (response.statusCode == 200) {
         final accessToken = response.data['data']['Auth_Login']['accessToken'];
         print('Access Token: $accessToken');
-        mainAppController.onLogin(accessToken); // Save token to controller
+        mainAppController.onLogin(accessToken);
+
       } else {
         throw Exception('Failed to authenticate');
       }

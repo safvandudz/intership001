@@ -50,34 +50,57 @@
 //   ],
 // );
 
-
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
-
 import '../Screens/Student/create/view.dart';
 import '../Screens/auth/login/login.dart';
 import '../app_state/main_app_controller.dart';
+ // Import your MainAppController
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
 final GoRouter router = GoRouter(
   navigatorKey: navigatorKey,
-  redirect: (context, state) {
+
+    ///token login dont go
+    ///studensScreen
+    ///--mainAppController has token null
+///token not present go to login only
+
+  redirect: (context, state)async {
+
+ var token = GetStorage().read('token') ?? "";
+
     print(state.fullPath);
     print(state.uri);
     print(state.name);
+    if(token.isEmpty){
+   return '/login';
 
-    if (state.name != '/login' && mainAppController.token.value == null) {
-      return '/login';
+    }else if(token.isNotEmpty&& state.fullPath=="/login") {
+
+    return '/students';
     }
-    // Otherwise, let the router handle navigation
+    else{
+      return null;
+    }
+
+    // if (state.name != '/login' && mainAppController.token.value == null) {
+    //   return '/login';
+    // } else if (state.name == '/login' && mainAppController.token.value != null) {
+    //   return '/students';
+    // }
+
   },
+
+
   initialLocation: '/login',
   routes: <RouteBase>[
     GoRoute(
       path: '/login',
-      builder: (context, state) {
+      builder: (BuildContext context, GoRouterState state) {
         return const Login();
       },
     ),
@@ -86,24 +109,6 @@ final GoRouter router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return const StudentsScreen();
       },
-      routes: <RouteBase>[
-        GoRoute(
-          path: 'create',
-          name: "createStudent",
-          builder: (BuildContext context, GoRouterState state) {
-            print(state.uri.query.toString());
-            return const StudentsScreen();
-          },
-        ),
-        GoRoute(
-          path: 'edit',
-          name: "editStudent",
-          builder: (BuildContext context, GoRouterState state) {
-            print(state.uri.query.toString());
-            return const StudentsScreen();
-          },
-        ),
-      ],
     ),
   ],
 );

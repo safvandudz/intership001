@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intership01/Screens/auth/login/login_controller.dart';
@@ -73,13 +74,17 @@ class Logfield extends StatelessWidget {
             inputFormatters: inputFormatters,
             validator: validator,
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 8.0),
-            child: Align(
-              alignment: Alignment.centerRight,
-              child: Text(
-                'Forget Password',
-                style: TextStyle(fontSize: 20),
+          GestureDetector(onTap: () {
+
+          },
+            child: Padding(
+              padding: const EdgeInsets.only(top: 8.0),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: Text(
+                  'Forget Password',
+                  style: TextStyle(fontSize: 20),
+                ),
               ),
             ),
           ),
