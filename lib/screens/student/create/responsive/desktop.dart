@@ -20,15 +20,11 @@ class StudentsDesktop extends StatefulWidget {
 }
 
 class _StudentsDesktopState extends State<StudentsDesktop> {
-
-
   Color _buttonColor = Colors.blue;
   Color _buttonColor1 = Colors.white;
   Color text = Colors.white;
   Color text1 = Colors.blue;
   @override
-
-
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
@@ -48,10 +44,11 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                     ),
                   ),
                 ),
-                SizedBox(height: 30,),
-
+                SizedBox(
+                  height: 30,
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15,right: 15),
+                  padding: const EdgeInsets.only(left: 15, right: 15),
                   child: GestureDetector(
                     onTap: () {
                       // Update color when "Students" button is pressed
@@ -76,21 +73,20 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                     ),
                   ),
                 ),
-                SizedBox(height: 8,),
+                SizedBox(
+                  height: 8,
+                ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 15,right: 15),
+                  padding: const EdgeInsets.only(left: 15, right: 15),
                   child: GestureDetector(
                     onTap: () {
-
                       setState(() {
                         _buttonColor = Colors.white;
-
                         _buttonColor1 = Colors.blue;
                         text = Colors.blue;
                         text1 = Colors.white;
+                        router.go('/teacher');
                       });
-
-
                     },
                     child: Buttn(
                       color: _buttonColor, // Use the state variable for color
@@ -148,7 +144,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                       size: 20,
                                       h: 15,
                                       labelText: 'Last Name',
-                                      controller: widget.controller.lastNameController,
+                                      controller:
+                                          widget.controller.lastNameController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
@@ -162,13 +159,12 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                       h: 15,
                                       validator: isEmailValid,
                                       labelText: 'Email Address',
-                                      controller:
-                                          widget.controller.emailAddressController,
+                                      controller: widget
+                                          .controller.emailAddressController,
                                       keyboardType: TextInputType.emailAddress,
                                       inputFormatters: [
                                         FilteringTextInputFormatter.allow(RegExp(
                                             '[a-z@.]')), // Allow lowercase letters, '@', and '.'
-
                                       ],
                                     ),
                                   ),
@@ -179,7 +175,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                       h: 15,
                                       labelText: 'User ID',
                                       validator: userIdValidator,
-                                      controller: widget.controller.userIDController,
+                                      controller:
+                                          widget.controller.userIDController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
@@ -192,7 +189,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                       size: 20,
                                       h: 15,
                                       labelText: 'District',
-                                      controller: widget.controller.districtController,
+                                      controller:
+                                          widget.controller.districtController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
@@ -203,7 +201,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                       h: 15,
                                       validator: isPhoneNumberValid,
                                       labelText: 'Phone No',
-                                      controller: widget.controller.phoneNoController,
+                                      controller:
+                                          widget.controller.phoneNoController,
                                       inputFormatters: [
                                         FilteringTextInputFormatter.digitsOnly,
                                         LengthLimitingTextInputFormatter(10),
@@ -220,7 +219,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                       size: 20,
                                       h: 15,
                                       labelText: 'Pincode',
-                                      controller: widget.controller.pincodeController,
+                                      controller:
+                                          widget.controller.pincodeController,
                                       keyboardType: TextInputType.phone,
                                     ),
                                   ),
@@ -232,7 +232,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                       size: 20,
                                       h: 15,
                                       labelText: 'Country',
-                                      controller: widget.controller.countryController,
+                                      controller:
+                                          widget.controller.countryController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
