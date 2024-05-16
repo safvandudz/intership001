@@ -15,7 +15,7 @@ class Logfield extends StatelessWidget {
   final TextInputType keyboardType;
   final TextInputType keyboardType1;
   final List<TextInputFormatter>? inputFormatters;
-    final String? Function(String?)? validator;
+  final String? Function(String?)? validator;
 
   const Logfield({
     Key? key,
@@ -34,65 +34,58 @@ class Logfield extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(height: double.maxFinite,
-        child: Center(
-          child: Container(
-            width: 450,
-            height: 500,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.w700),
-                ),
-                Text(
-                  subtitle,
-                  style: TextStyle(fontSize: 25),
-                ),
-                SizedBox(
-                  height: 40,
-                ),
-                TextField1(
-                  labelText: 'Username/Email',
-                  size: size,
-                  controller: controller.userNameController,
-                  h: h,
-                  pass: false,
-                  keyboardType: keyboardType,
-                  inputFormatters: inputFormatters,
-                  validator: validator,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextField1(
-                  pass:obs ,
-                  labelText: 'Password',
-                  size: size,
-                  controller: controller.passwordController,
-                  h: h,
-                  keyboardType: keyboardType1,
-                  inputFormatters: inputFormatters,
-                  validator: validator,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8.0),
-                  child: Align(
-                    alignment: Alignment.centerRight,
-                    child: Text(
-                      'Forget Password',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 25,),
-                Button(button: button,controller:controller,),
-              ],
+    return Container(constraints: BoxConstraints(maxWidth: 450),
+
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            title,
+            style: TextStyle(fontSize: 50, fontWeight: FontWeight.w700),
+          ),
+          Text(
+            subtitle,
+            style: TextStyle(fontSize: 25),
+          ),
+          SizedBox(
+            height: 40,
+          ),
+          TextField1(
+            labelText: 'Username/Email',
+            size: size,
+            controller: controller.userNameController,
+            h: h,
+            pass: false,
+            keyboardType: keyboardType,
+            inputFormatters: inputFormatters,
+            validator: validator,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          TextField1(
+            pass:obs ,
+            labelText: 'Password',
+            size: size,
+            controller: controller.passwordController,
+            h: h,
+            keyboardType: keyboardType1,
+            inputFormatters: inputFormatters,
+            validator: validator,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(top: 8.0),
+            child: Align(
+              alignment: Alignment.centerRight,
+              child: Text(
+                'Forget Password',
+                style: TextStyle(fontSize: 20),
+              ),
             ),
           ),
-        ),
+          SizedBox(height: 25,),
+          Button(button: button,controller:controller,),
+        ],
       ),
     );
   }

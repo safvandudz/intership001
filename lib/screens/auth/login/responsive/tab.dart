@@ -10,23 +10,29 @@ class Login_tab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Expanded(
-              child: Padding(
+      body: Container(
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Padding(
                   padding: const EdgeInsets.only(left: 87, top: 74, right: 87),
                   child: Center(
                     child: Image.asset(
                       'assets/Log.png',
                       fit: BoxFit.contain,
                     ),
-                  ))),
-          Logfield(controller: LoginController(),
-            keyboardType: TextInputType.text,
-            obs: true,
-            keyboardType1: TextInputType.text,
-          )
-        ],
+                  )),
+              Padding(
+                padding: const EdgeInsets.all(24),
+                child: Logfield(controller: LoginController(),
+                  keyboardType: TextInputType.text,
+                  obs: true,
+                  keyboardType1: TextInputType.text,
+                ),
+              )
+            ],
+          ),
+        ),
       ),
     );
   }

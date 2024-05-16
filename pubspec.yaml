@@ -42,6 +42,7 @@ dependencies:
   go_router: ^12.1.1
   url_strategy: ^0.2.0
   dio: ^5.4.3+1
+  get_storage: ^2.1.1
 
 dev_dependencies:
   flutter_test:

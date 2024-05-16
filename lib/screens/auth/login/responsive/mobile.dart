@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../Fieldlog.dart';
+import '../fieldlog.dart';
 import '../login_controller.dart';
 
 class Login_Mobile extends StatelessWidget {
@@ -11,12 +11,17 @@ class Login_Mobile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Logfield(controller: LoginController(),
-          keyboardType: TextInputType.text,
-          obs: true,
-          keyboardType1: TextInputType.text,
-        )
+      body: SingleChildScrollView(
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.only(top: 50),
+            child: Logfield(controller: LoginController(),
+              keyboardType: TextInputType.text,
+              obs: true,
+              keyboardType1: TextInputType.text,
+            ),
+          ),
+        ),
       ),
     );
   }

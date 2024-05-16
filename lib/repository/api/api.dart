@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
 import 'package:intership01/Screens/auth/login/login_controller.dart';
+import 'package:intership01/app_state/main_app_controller.dart';
 
 import '../../Screens/Student/create/view.dart';
 
@@ -10,8 +11,8 @@ class ApiController extends GetxController {
 
   ApiController({required this.controller});
 
-  var data = [].obs;
-  var isLoading = true.obs;
+  // var data = [].obs;
+  // var isLoading = true.obs;
 
   @override
   void onInit() {
@@ -58,8 +59,8 @@ class ApiController extends GetxController {
       );
       if (response.statusCode == 200) {
         final accessToken = response.data['data']['Auth_Login']['accessToken'];
-
         print('Access Token: $accessToken');
+        mainAppController.onLogin(accessToken); // Save token to controller
       } else {
         throw Exception('Failed to authenticate');
       }
