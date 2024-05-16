@@ -1,18 +1,34 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:intership01/Screens/Student/List.dart';
 
+import '../../../../router/approutes.dart';
 import '../../../../utils/validator.dart';
+import '../../../../widget/buttn.dart';
 import '../../../../widget/field.dart';
 import '../logcontrollers.dart';
 
-class StudentsDesktop extends StatelessWidget {
+class StudentsDesktop extends StatefulWidget {
   final LogController controller;
 
   const StudentsDesktop({Key? key, required this.controller}) : super(key: key);
 
   @override
+  State<StudentsDesktop> createState() => _StudentsDesktopState();
+}
+
+class _StudentsDesktopState extends State<StudentsDesktop> {
+
+
+  Color _buttonColor = Colors.blue;
+  Color _buttonColor1 = Colors.white;
+  Color text = Colors.white;
+  Color text1 = Colors.blue;
+  @override
+
+
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
@@ -32,6 +48,64 @@ class StudentsDesktop extends StatelessWidget {
                     ),
                   ),
                 ),
+                SizedBox(height: 30,),
+
+                Padding(
+                  padding: const EdgeInsets.only(left: 15,right: 15),
+                  child: GestureDetector(
+                    onTap: () {
+                      // Update color when "Students" button is pressed
+                      setState(() {
+                        _buttonColor = Colors.blue;
+                        _buttonColor1 = Colors.white;
+                        text = Colors.white;
+                        text1 = Colors.blue;
+                      });
+                    },
+                    child: Buttn(
+                      color: _buttonColor1, // Use the state variable for color
+                      child: Text(
+                        'Students',
+                        style: TextStyle(
+                          color: text1,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      h: '20',
+                    ),
+                  ),
+                ),
+                SizedBox(height: 8,),
+                Padding(
+                  padding: const EdgeInsets.only(left: 15,right: 15),
+                  child: GestureDetector(
+                    onTap: () {
+
+                      setState(() {
+                        _buttonColor = Colors.white;
+
+                        _buttonColor1 = Colors.blue;
+                        text = Colors.blue;
+                        text1 = Colors.white;
+                      });
+
+
+                    },
+                    child: Buttn(
+                      color: _buttonColor, // Use the state variable for color
+                      child: Text(
+                        'Teacher',
+                        style: TextStyle(
+                          color: text,
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      h: '20',
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -41,7 +115,7 @@ class StudentsDesktop extends StatelessWidget {
               child: Container(
                 width: double.infinity,
                 child: Form(
-                  key: controller.formKey,
+                  key: widget.controller.formKey,
                   child: SingleChildScrollView(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -63,7 +137,7 @@ class StudentsDesktop extends StatelessWidget {
                                       h: 15,
                                       labelText: 'First Name',
                                       controller:
-                                          controller.firstNameController,
+                                          widget.controller.firstNameController,
                                       keyboardType: TextInputType.text,
                                       validator: validName,
                                     ),
@@ -74,7 +148,7 @@ class StudentsDesktop extends StatelessWidget {
                                       size: 20,
                                       h: 15,
                                       labelText: 'Last Name',
-                                      controller: controller.lastNameController,
+                                      controller: widget.controller.lastNameController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
@@ -89,7 +163,7 @@ class StudentsDesktop extends StatelessWidget {
                                       validator: isEmailValid,
                                       labelText: 'Email Address',
                                       controller:
-                                          controller.emailAddressController,
+                                          widget.controller.emailAddressController,
                                       keyboardType: TextInputType.emailAddress,
                                       inputFormatters: [
                                         FilteringTextInputFormatter.allow(RegExp(
@@ -105,7 +179,7 @@ class StudentsDesktop extends StatelessWidget {
                                       h: 15,
                                       labelText: 'User ID',
                                       validator: userIdValidator,
-                                      controller: controller.userIDController,
+                                      controller: widget.controller.userIDController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
@@ -118,7 +192,7 @@ class StudentsDesktop extends StatelessWidget {
                                       size: 20,
                                       h: 15,
                                       labelText: 'District',
-                                      controller: controller.districtController,
+                                      controller: widget.controller.districtController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
@@ -129,7 +203,7 @@ class StudentsDesktop extends StatelessWidget {
                                       h: 15,
                                       validator: isPhoneNumberValid,
                                       labelText: 'Phone No',
-                                      controller: controller.phoneNoController,
+                                      controller: widget.controller.phoneNoController,
                                       inputFormatters: [
                                         FilteringTextInputFormatter.digitsOnly,
                                         LengthLimitingTextInputFormatter(10),
@@ -146,7 +220,7 @@ class StudentsDesktop extends StatelessWidget {
                                       size: 20,
                                       h: 15,
                                       labelText: 'Pincode',
-                                      controller: controller.pincodeController,
+                                      controller: widget.controller.pincodeController,
                                       keyboardType: TextInputType.phone,
                                     ),
                                   ),
@@ -158,7 +232,7 @@ class StudentsDesktop extends StatelessWidget {
                                       size: 20,
                                       h: 15,
                                       labelText: 'Country',
-                                      controller: controller.countryController,
+                                      controller: widget.controller.countryController,
                                       keyboardType: TextInputType.text,
                                     ),
                                   ),
@@ -178,7 +252,7 @@ class StudentsDesktop extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               TextButton(
-                                onPressed: controller.clearForm,
+                                onPressed: widget.controller.clearForm,
                                 child: Text(
                                   "Reset all",
                                   style: TextStyle(
@@ -188,7 +262,7 @@ class StudentsDesktop extends StatelessWidget {
                                 ),
                               ),
                               ElevatedButton(
-                                onPressed: () => controller.onSubmit(),
+                                onPressed: () => widget.controller.onSubmit(),
                                 style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blue,
                                   minimumSize: Size(10, 60),

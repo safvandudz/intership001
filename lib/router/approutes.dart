@@ -57,6 +57,7 @@ import 'package:go_router/go_router.dart';
 import '../Screens/Student/create/view.dart';
 import '../Screens/auth/login/login.dart';
 import '../app_state/main_app_controller.dart';
+import '../screens/teacher/teacher_list.dart';
  // Import your MainAppController
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey();
@@ -110,5 +111,12 @@ final GoRouter router = GoRouter(
         return const StudentsScreen();
       },
     ),
+    GoRoute(
+      path: '/teacher',
+      builder: (BuildContext context, GoRouterState state) {
+        return  TeacherPage();
+      },
+    ),
   ],
 );
+// TeacherPage

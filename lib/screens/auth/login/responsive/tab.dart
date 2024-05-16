@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intership01/Screens/auth/login/login_controller.dart';
 
-import '../Fieldlog.dart';
+import '../../widgets/fieldlog.dart';
 
 class Login_tab extends StatelessWidget {
   final LoginController controller;
