@@ -11,7 +11,7 @@ class MainAppController extends GetxController {
     this.token.value = token;
     print('sucess');
     // if(token!=null){
-     router.go('/students');
+     router.go('/home');
     //
     // }
 

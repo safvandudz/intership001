@@ -28,7 +28,7 @@ final GoRouter router = GoRouter(
 
     }else if(token.isNotEmpty&& state.fullPath=="/login") {
 
-    return '/students';
+    return '/home';
     }
     else{
       return null;
@@ -50,19 +50,29 @@ final GoRouter router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return const Login();
       },
+
     ),
     GoRoute(
-      path: '/students',
+      path: '/home',
       builder: (BuildContext context, GoRouterState state) {
         return const HomeScreen();
-      },
+      },routes: [
+      GoRoute(
+        path: 'teacher',
+        builder: (BuildContext context, GoRouterState state) {
+          return  TeacherScreen();
+        },
+      ),
+      GoRoute(
+        path: 'students',
+        builder: (BuildContext context, GoRouterState state) {
+          return  StudentsScreen();
+        },
+      ),
+
+    ]
     ),
-    GoRoute(
-      path: '/teacher',
-      builder: (BuildContext context, GoRouterState state) {
-        return  TeacherScreen();
-      },
-    ),
+
   ],
 );
 // TeacherPage

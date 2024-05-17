@@ -12,6 +12,7 @@ class Responsive extends StatelessWidget {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
+        var width=MediaQuery.of(context).size.width;
         if (constraints.maxWidth > 992) {
           // Tablet layout
           return desktop;

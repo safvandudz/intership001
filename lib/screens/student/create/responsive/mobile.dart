@@ -74,7 +74,7 @@ class StudentsMobile extends StatelessWidget {
                       controller: controller.countryController,
 
                     ),
-                    SizedBox(height: 20),
+                    SizedBox(height: 50),
                     Center(
                       child: Column(
                         children: [

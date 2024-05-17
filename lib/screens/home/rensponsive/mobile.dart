@@ -23,25 +23,7 @@ class HomeMobile extends StatelessWidget {
       ),
       body: Scaffold(body:
 
-        Column(
-          children: [Visibility(
-            visible: true,
-            child: Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 87, top: 74, right: 87),
-                  child: TeacherScreen(),
-                )),
-          ),
-            Visibility(
-              visible: true,
-              child: Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.only(left: 87, top: 74, right: 87),
-                    child: StudentsScreen()
-                ),
-              ),
-            ),],
-        )
+        StudentsScreen()
         ,),
     );
   }

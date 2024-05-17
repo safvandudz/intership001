@@ -5,33 +5,29 @@ import 'package:intership01/screens/teacher/teacherScreen.dart';
 import '../../../../utils/validator.dart';
 import '../../../../widget/buttn.dart';
 import '../../../../widget/field.dart';
+import '../../../router/approutes.dart';
 import '../../Student/create/view.dart';
 
 class HomeTab extends StatefulWidget {
-  // final LogController controller;
-
-  const HomeTab({Key? key,
-    // required this.controller
-  }) : super(key: key);
+  const HomeTab({Key? key}) : super(key: key);
 
   @override
   State<HomeTab> createState() => _HomeTabState();
 }
 
 class _HomeTabState extends State<HomeTab> {
-  bool teach = true;
-  bool stud = false;
+  Color _buttonColor = Colors.white;
+  Color _buttonColor1 = Colors.blue;
+  Color text = Colors.blue;
+  Color text1 = Colors.white;
 
-  Color _buttonColor = Colors.blue;
-  Color _buttonColor1 = Colors.white;
-  Color text = Colors.white;
-  Color text1 = Colors.blue;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // Sidebar
           Container(
             width: 213,
             color: Colors.blue,
@@ -53,22 +49,20 @@ class _HomeTabState extends State<HomeTab> {
                   padding: const EdgeInsets.only(left: 15, right: 15),
                   child: GestureDetector(
                     onTap: () {
-                      // Update color when "Students" button is pressed
                       setState(() {
-                        teach = true;
-                        stud = false;
-                        _buttonColor = Colors.blue;
-                        _buttonColor1 = Colors.white;
-                        text = Colors.white;
-                        text1 = Colors.blue;
+                        _buttonColor = Colors.white;
+                        _buttonColor1 = Colors.blue;
+                        text = Colors.blue;
+                        text1 = Colors.white;
+                        router.go('students');
                       });
                     },
                     child: Buttn(
-                      color: _buttonColor1, // Use the state variable for color
+                      color: _buttonColor,
                       child: Text(
                         'Students',
                         style: TextStyle(
-                          color: text1,
+                          color: text,
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -85,20 +79,19 @@ class _HomeTabState extends State<HomeTab> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        stud = true;
-                        teach = false;
-                        _buttonColor = Colors.white;
-                        _buttonColor1 = Colors.blue;
-                        text = Colors.blue;
-                        text1 = Colors.white;
+                        _buttonColor = Colors.blue;
+                        _buttonColor1 = Colors.white;
+                        text = Colors.white;
+                        text1 = Colors.blue;
+                        router.pushNamed('teacher');
                       });
                     },
                     child: Buttn(
-                      color: _buttonColor, // Use the state variable for color
+                      color: _buttonColor1,
                       child: Text(
                         'Teacher',
                         style: TextStyle(
-                          color: text,
+                          color: text1,
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
                         ),
@@ -110,25 +103,19 @@ class _HomeTabState extends State<HomeTab> {
               ],
             ),
           ),
-          Visibility(
-            visible: teach,
-            child: Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.only(left: 40, top: 30, right: 40),
-                  child: TeacherScreen(),
-                )),
-          ),
-          Visibility(
-            visible: stud,
-            child: Expanded(
-              child: Padding(
-                  padding: const EdgeInsets.only(left: 40, top: 30, right: 40),
-                  child: StudentsScreen()
-              ),
+          // Content Area
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 40, top: 30, right: 40),
+              child: _buildSelectedContent(),
             ),
           ),
         ],
       ),
     );
+  }
+
+  Widget _buildSelectedContent() {
+
   }
 }
