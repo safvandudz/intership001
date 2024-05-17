@@ -14,21 +14,7 @@ class StudentsTab extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(body: Row(crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          width: 213,
-          color: Colors.blue,
-          child: Column(
-            children: [
-              SizedBox(
-                width: 134,
-                height: 80,
-                child: Image.asset(
-                  'assets/Logo.png', // Replace with your actual image path
-                ),
-              ),
-            ],
-          ),
-        ),
+
         Expanded(
           child:Padding(
             padding: const EdgeInsets.only(left: 30, top: 40, right: 40),
