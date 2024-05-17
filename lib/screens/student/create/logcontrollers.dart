@@ -2,8 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intership01/Screens/Student/create/sub_screen/details.dart';
-import 'package:intership01/Screens/Student/create/view.dart'; // Assuming you have a view.dart file
-import '../../../main.dart';
 import '../../../router/approutes.dart';
 
 class LogController extends GetxController {

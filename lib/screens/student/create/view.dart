@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:intership01/Screens/Student/create/logcontrollers.dart';
 import 'package:intership01/Screens/Student/create/responsive/desktop.dart';
 import 'package:intership01/Screens/Student/create/responsive/mobile.dart';
 import 'package:intership01/Screens/Student/create/responsive/tab.dart';
 
 import 'package:intership01/widget/response.dart';
 
-import 'logcontrollers.dart';
 
 class StudentsScreen extends StatefulWidget {
   final String? id;

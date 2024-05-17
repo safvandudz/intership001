@@ -54,6 +54,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:go_router/go_router.dart';
+import 'package:intership01/screens/teacher/teacherScreen.dart';
 import '../Screens/Student/create/view.dart';
 import '../Screens/auth/login/login.dart';
 import '../app_state/main_app_controller.dart';
@@ -114,7 +115,7 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '/teacher',
       builder: (BuildContext context, GoRouterState state) {
-        return  TeacherPage();
+        return  TeacherScreen();
       },
     ),
   ],
