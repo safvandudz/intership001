@@ -1,25 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:intership01/screens/home/homeController.dart';
+
+import '../widgets/listItems.dart';
 
 class HomeTab extends StatefulWidget {
- final Widget child;
-
-  const HomeTab({Key? key,required this.child,}) : super(key: key);
+  final HomeController controller;
+  final Widget child;
+  const HomeTab({
+    Key? key,
+    required this.child,
+    required this.controller,
+  }) : super(key: key);
 
   @override
   State<HomeTab> createState() => _HomeTabState();
 }
 
 class _HomeTabState extends State<HomeTab> {
-  Color _buttonColor = Colors.white;
-  Color _buttonColor1 = Colors.blue;
-  Color text = Colors.blue;
-  Color text1 = Colors.white;
-
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -42,19 +43,22 @@ class _HomeTabState extends State<HomeTab> {
                 SizedBox(
                   height: 30,
                 ),
+                ListWidget(
+                  controller: widget.controller,
+                  h: 30,
+                ),
               ],
             ),
           ),
           // Content Area
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.only(left: 40, top: 30, right: 40),child: widget.child,
+              padding: const EdgeInsets.only(left: 40, top: 30, right: 40),
+              child: widget.child,
             ),
           ),
         ],
       ),
     );
   }
-
-
 }

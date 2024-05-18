@@ -1,11 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:intership01/screens/teacher/teacherScreen.dart';
-import '../../../../utils/validator.dart';
-import '../../../../widget/buttn.dart';
-import '../../../../widget/field.dart';
-import '../../../router/approutes.dart';
+
 import '../homeController.dart';
 import '../widgets/listItems.dart';
 
@@ -14,7 +9,7 @@ class HomeDesktop extends StatefulWidget {
 final Widget child;
   const HomeDesktop({Key? key, required this.child,
     required this.controller,
-    // required this.controller
+
   }) : super(key: key);
 
   @override
@@ -42,7 +37,9 @@ class _HomeDesktopState extends State<HomeDesktop> {
                     ),
                   ),
                 ),
-                ListWidget(controller: widget.controller),
+                SizedBox(height: 50,),
+
+                ListWidget(controller: widget.controller,),
 
               ],
             ),

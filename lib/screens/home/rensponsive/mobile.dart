@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:intership01/screens/home/homeController.dart';
 
 import '../../../router/approutes.dart';
+import '../widgets/listItems.dart';
 
 class HomeMobile extends StatefulWidget {
+  final HomeController controller;
   final Widget child;
-  const HomeMobile({super.key, required this.child});
+  const HomeMobile({super.key, required this.child, required this.controller});
 
   @override
   State<HomeMobile> createState() => _HomeMobileState();
@@ -34,31 +37,8 @@ class _HomeMobileState extends State<HomeMobile> {
         ),
         leadingWidth: 50,
       ),
-      drawer:Drawer(width: 130  ,shape: Border(),
-        child: ListView(
-          // padding: EdgeInsets.zero,
-          children: <Widget>[
-            ListTile(
-
-              title: Text('teacher'),
-              onTap: () {
-                router.go('/teacher');
-              },
-            ),
-            ListTile(
-              title: Text('Student'),
-              onTap: () {
-                router.go('/createStudent');
-              },
-            ),
-            ListTile(
-              title: Text('Connect'),
-              onTap: () {
-                router.go('/teacher');
-              },
-            ),
-          ],
-        ),
+      drawer:Drawer(width: 130  ,backgroundColor: Colors.blue,shape: Border(),
+        child: ListWidget(controller: widget.controller),
       ),
       body: Scaffold(body:
 

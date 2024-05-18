@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intership01/screens/dump/dumpController.dart';
+import 'package:intership01/screens/dump/responsive/desktop.dart';
+import 'package:intership01/screens/dump/responsive/mobile.dart';
+import 'package:intership01/screens/dump/responsive/tab.dart';
 import 'package:intership01/screens/home/homeController.dart';
 import 'package:intership01/screens/home/rensponsive/desktop.dart';
 import 'package:intership01/screens/home/rensponsive/mobile.dart';
@@ -8,21 +12,23 @@ import 'package:intership01/screens/teacher/responsive/desktop.dart';
 import 'package:intership01/screens/teacher/teacher_list_controller.dart';
 import 'package:intership01/widget/response.dart';
 
-class HomeScreen extends StatefulWidget {
-  final Widget child;
+class DumpScreen extends StatefulWidget {
+  // final Widget child;
   // final String? id;
-  const HomeScreen({super.key, required this.child,});
+  const DumpScreen({
+    super.key,
+  });
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<DumpScreen> createState() => _DumpScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _DumpScreenState extends State<DumpScreen> {
   String tag = DateTime.now().toString();
-  late HomeController _controller;
+  late DumpController _controller;
   @override
   void initState() {
-    _controller = Get.put(tag: tag, HomeController());
+    _controller = Get.put(tag: tag, DumpController());
     super.initState();
   }
 
@@ -36,10 +42,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      tab: HomeTab(controller: _controller,
-      child: widget.child,),
-      desktop:HomeDesktop(child: widget.child,controller: _controller,),
-      mobile: HomeMobile(child: widget.child,controller: _controller,),
+      tab: DumpTab(),
+      desktop:  DumpDesktop(controller: _controller,),
+      mobile: DumpMobile()
     );
   }
 }

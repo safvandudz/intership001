@@ -6,7 +6,7 @@ class HomeController extends GetxController {
   List<NavItem> navItems = [
     NavItem(name: "Student", route: "/students"),
     NavItem(name: "Teacher", route: "/teacher"),
-    NavItem(name: "Dump", route: "/teacher"),
+    NavItem(name: "Dump", route: "/dump"),
 
   ];
 

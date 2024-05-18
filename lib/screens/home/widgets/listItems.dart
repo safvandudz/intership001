@@ -5,8 +5,9 @@ import '../../../widget/buttn.dart';
 
 class ListWidget extends StatelessWidget {
   final HomeController controller;
+  final double h;
 
-  const ListWidget({Key? key, required this.controller}) : super(key: key);
+  const ListWidget({Key? key, required this.controller,this.h=52}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +32,7 @@ class ListWidget extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              h: '20',
+              h: h,
             ),
           ),
         );
