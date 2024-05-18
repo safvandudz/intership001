@@ -1,22 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intership01/screens/teacher/teacherScreen.dart';
 import '../../../../utils/validator.dart';
-import '../../../../widget/buttn.dart';
 import '../../../../widget/field.dart';
-import '../logcontrollers.dart';
+import '../studentController.dart';
 
-class StudentsDesktop extends StatefulWidget {
-  final LogController controller;
+class StudentsDesktop extends StatelessWidget {
+  final StudentController controller;
 
   const StudentsDesktop({Key? key, required this.controller}) : super(key: key);
 
-  @override
-  State<StudentsDesktop> createState() => _StudentsDesktopState();
-}
-
-class _StudentsDesktopState extends State<StudentsDesktop> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,15 +18,14 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
         child: Container(
           width: double.infinity,
           child: Form(
-            key: widget.controller.formKey,
+            key: controller.formKey,
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'BASIC DETAILS',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold, fontSize: 35),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 35),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(top: 86),
@@ -46,8 +38,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 size: 20,
                                 h: 15,
                                 labelText: 'First Name',
-                                controller: widget
-                                    .controller.firstNameController,
+                                controller:
+                                    controller.firstNameController,
                                 keyboardType: TextInputType.text,
                                 validator: validName,
                               ),
@@ -58,8 +50,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 size: 20,
                                 h: 15,
                                 labelText: 'Last Name',
-                                controller: widget
-                                    .controller.lastNameController,
+                                controller:
+                                    controller.lastNameController,
                                 keyboardType: TextInputType.text,
                               ),
                             ),
@@ -73,10 +65,9 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 h: 15,
                                 validator: isEmailValid,
                                 labelText: 'Email Address',
-                                controller: widget
-                                    .controller.emailAddressController,
-                                keyboardType:
-                                    TextInputType.emailAddress,
+                                controller:
+                                    controller.emailAddressController,
+                                keyboardType: TextInputType.emailAddress,
                                 inputFormatters: [
                                   FilteringTextInputFormatter.allow(RegExp(
                                       '[a-z@.]')), // Allow lowercase letters, '@', and '.'
@@ -90,8 +81,7 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 h: 15,
                                 labelText: 'User ID',
                                 validator: userIdValidator,
-                                controller:
-                                    widget.controller.userIDController,
+                                controller: controller.userIDController,
                                 keyboardType: TextInputType.text,
                               ),
                             ),
@@ -104,8 +94,8 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 size: 20,
                                 h: 15,
                                 labelText: 'District',
-                                controller: widget
-                                    .controller.districtController,
+                                controller:
+                                    controller.districtController,
                                 keyboardType: TextInputType.text,
                               ),
                             ),
@@ -116,11 +106,9 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 h: 15,
                                 validator: isPhoneNumberValid,
                                 labelText: 'Phone No',
-                                controller:
-                                    widget.controller.phoneNoController,
+                                controller: controller.phoneNoController,
                                 inputFormatters: [
-                                  FilteringTextInputFormatter
-                                      .digitsOnly,
+                                  FilteringTextInputFormatter.digitsOnly,
                                   LengthLimitingTextInputFormatter(10),
                                 ],
                                 keyboardType: TextInputType.phone,
@@ -135,8 +123,7 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 size: 20,
                                 h: 15,
                                 labelText: 'Pincode',
-                                controller:
-                                    widget.controller.pincodeController,
+                                controller: controller.pincodeController,
                                 keyboardType: TextInputType.phone,
                               ),
                             ),
@@ -148,8 +135,7 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                                 size: 20,
                                 h: 15,
                                 labelText: 'Country',
-                                controller:
-                                    widget.controller.countryController,
+                                controller: controller.countryController,
                                 keyboardType: TextInputType.text,
                               ),
                             ),
@@ -163,13 +149,12 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                   ),
                   Container(
                     color: Colors.white,
-                    padding: EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 20),
+                    padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextButton(
-                          onPressed: widget.controller.clearForm,
+                          onPressed: controller.clearForm,
                           child: Text(
                             "Reset all",
                             style: TextStyle(
@@ -179,22 +164,20 @@ class _StudentsDesktopState extends State<StudentsDesktop> {
                           ),
                         ),
                         ElevatedButton(
-                          onPressed: () => widget.controller.onSubmit(),
+                          onPressed: () => controller.onSubmit(),
                           style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.blue,
                             minimumSize: Size(10, 60),
                             padding: EdgeInsets.symmetric(
-                                vertical: 10,
-                                horizontal: 20), // Inner padding
+                                vertical: 10, horizontal: 20), // Inner padding
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(
-                                  24), // Reduced radius
+                              borderRadius:
+                                  BorderRadius.circular(24), // Reduced radius
                             ),
                           ),
                           child: Text(
                             "Save & Proceed",
-                            style: TextStyle(
-                                color: Colors.white, fontSize: 20),
+                            style: TextStyle(color: Colors.white, fontSize: 20),
                           ),
                         ),
                       ],

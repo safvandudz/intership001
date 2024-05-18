@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:intership01/Screens/Student/create/logcontrollers.dart';
-import 'package:intership01/Screens/Student/create/responsive/desktop.dart';
-import 'package:intership01/Screens/Student/create/responsive/mobile.dart';
-import 'package:intership01/Screens/Student/create/responsive/tab.dart';
+import 'package:intership01/screens/student/responsive/desktop.dart';
+import 'package:intership01/screens/student/responsive/mobile.dart';
+import 'package:intership01/screens/student/studentController.dart';
 
 import 'package:intership01/widget/response.dart';
+
+import 'responsive/tab.dart';
+
 
 
 class StudentsScreen extends StatefulWidget {
@@ -18,16 +20,16 @@ class StudentsScreen extends StatefulWidget {
 }
 
 class _StudentsScreenState extends State<StudentsScreen> {
-  String tag= DateTime.now().toString();
-  late LogController _controller ;
+ final String tag= DateTime.now().toString();
+  late StudentController _controller ;
   @override
   void initState() {
-    _controller= Get.put(LogController(),tag:tag);
+    _controller= Get.put(StudentController(),tag:tag);
     super.initState();
   }
   @override
   void dispose() {
-    Get.delete<LogController>(
+    Get.delete<StudentController>(
         tag: tag
     );
     // TODO: implement dispose

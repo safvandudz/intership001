@@ -9,8 +9,9 @@ import 'package:intership01/screens/teacher/teacher_list_controller.dart';
 import 'package:intership01/widget/response.dart';
 
 class HomeScreen extends StatefulWidget {
+  final Widget child;
   // final String? id;
-  const HomeScreen({super.key,});
+  const HomeScreen({super.key, required this.child,});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -35,9 +36,9 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Responsive(
-      tab: HomeTab(),
-      desktop:HomeDesktop(),
-      mobile: HomeMobile(),
+      tab: HomeTab(child: widget.child,),
+      desktop:HomeDesktop(child: widget.child,controller: _controller,),
+      mobile: HomeMobile(child: widget.child,),
     );
   }
 }

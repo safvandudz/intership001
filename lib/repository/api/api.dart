@@ -4,7 +4,6 @@ import 'package:dio/dio.dart';
 import 'package:intership01/Screens/auth/login/login_controller.dart';
 import 'package:intership01/app_state/main_app_controller.dart';
 
-import '../../Screens/Student/create/view.dart';
 
 class ApiController extends GetxController {
   final LoginController controller;

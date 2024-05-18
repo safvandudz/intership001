@@ -1,22 +1,27 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:intership01/Screens/Student/create/logcontrollers.dart';
 import 'package:intership01/utils/validator.dart';
 
 import '../../../../widget/field.dart';
+import '../studentController.dart';
 
 
-class StudentsMobile extends StatelessWidget {
-  final LogController controller;
+class StudentsMobile extends StatefulWidget {
+  final StudentController controller;
   const StudentsMobile({super.key,required this.controller});
 
+  @override
+  State<StudentsMobile> createState() => _StudentsMobileState();
+}
+
+class _StudentsMobileState extends State<StudentsMobile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body:
       Form(
-        key: controller.formKey,
+        key: widget.controller.formKey,
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -31,47 +36,47 @@ class StudentsMobile extends StatelessWidget {
                     ),
                     Fields(size: 12,h: 8,
                       labelText: 'First Name',
-                      controller: controller.firstNameController,
+                      controller: widget.controller.firstNameController,
                       keyboardType: TextInputType.text,validator: validName,
                     ),
                     Fields(size: 12,h: 8,
                       labelText: 'Last Name',
-                      controller: controller.lastNameController,
+                      controller: widget.controller.lastNameController,
                       keyboardType: TextInputType.text,
                     ),
                     Fields(size: 12,h: 8,
                       labelText: 'Email Address',
-                      controller: controller.emailAddressController,
+                      controller: widget.controller.emailAddressController,
                       keyboardType: TextInputType.emailAddress,
                       validator: isEmailValid,
                     ),
                     Fields(size: 12,h: 8,
                       labelText: 'User ID',
-                      controller: controller.userIDController,
+                      controller: widget.controller.userIDController,
                       keyboardType: TextInputType.text,
                       validator: userIdValidator,
                     ),
                     Fields(size: 12,h: 8,
                       labelText: 'District',
-                      controller: controller.districtController,
+                      controller: widget.controller.districtController,
                       keyboardType: TextInputType.text,
                     ),
                     Fields(size: 12,h: 8,
 
                       labelText: 'Phone No',
-                      controller: controller.phoneNoController,
+                      controller: widget.controller.phoneNoController,
                       keyboardType: TextInputType.phone,validator: isPhoneNumberValid,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly,LengthLimitingTextInputFormatter(10)],
                     ),
                     Fields(size: 12,h: 8,
                       labelText: 'Pincode',
-                      controller: controller.pincodeController,
+                      controller: widget.controller.pincodeController,
                       keyboardType: TextInputType.phone,
                       inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                     ),
                     Fields(size: 12,h: 8,
                       labelText: 'Country',
-                      controller: controller.countryController,
+                      controller: widget.controller.countryController,
 
                     ),
                     SizedBox(height: 50),
@@ -79,9 +84,9 @@ class StudentsMobile extends StatelessWidget {
                       child: Column(
                         children: [
                           ElevatedButton(
-                            onPressed:() => controller.saveForm(context)
-                            ,
-                            style: ElevatedButton.styleFrom(
+
+                              onPressed: () => widget.controller.onSubmit(),
+                        style: ElevatedButton.styleFrom(
                               backgroundColor: Colors.blue, // Background color
                             ),
                             child: Text(
@@ -92,7 +97,7 @@ class StudentsMobile extends StatelessWidget {
 
                           SizedBox(height: 8),
                           TextButton(
-                            onPressed: controller.clearForm,
+                            onPressed: widget.controller.clearForm,
                             child: Text(
                               "Reset All",
                               style: TextStyle(color: Colors.black), // Text color

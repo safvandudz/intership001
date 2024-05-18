@@ -1,10 +1,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:intership01/Screens/Student/create/sub_screen/details.dart';
 import '../../../router/approutes.dart';
+import 'lists/details.dart';
 
-class LogController extends GetxController {
+class StudentController extends GetxController {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final TextEditingController firstNameController = TextEditingController();
@@ -15,6 +15,7 @@ class LogController extends GetxController {
   final TextEditingController phoneNoController = TextEditingController();
   final TextEditingController pincodeController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
+int i =0;
 
   ///_create ()
    ///_edit(){
@@ -23,7 +24,6 @@ class LogController extends GetxController {
    ///items.refresh()
   void saveForm(BuildContext context) {
 
-    // final formKey = GlobalKey<FormState>();
     if (formKey.currentState!.validate()) {
       print("hello");
       final firstName = firstNameController.text.trim();
@@ -51,8 +51,8 @@ class LogController extends GetxController {
       clearForm();
 
       Get.snackbar('Success', 'Form saved successfully');
-
-      Navigator.pop(context);
+router.go('/createStudent');
+      // Navigator.pop(context);
     } else {
       print('Form validation failed');
     }
@@ -78,8 +78,9 @@ class LogController extends GetxController {
    /// route to list page
 
   void onSubmit() {
+    print("hello");
     saveForm(navigatorKey.currentContext!);
-
+    // router.go('/createStudent');
     //
     // Save the form data
     // You can add any additional logic related to form submission here

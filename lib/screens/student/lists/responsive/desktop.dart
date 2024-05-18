@@ -3,14 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:go_router/go_router.dart';
-import 'package:intership01/Screens/Student/create/view.dart';
-import '../../../../widget/field.dart';
-import '../../main.dart';
-import 'create/sub_screen/details.dart';
+import '../../../../../router/approutes.dart';
+import '../details.dart';
 
-class StudentsList extends StatelessWidget {
-  const StudentsList({Key? key}) : super(key: key);
+class DataDesktop extends StatelessWidget {
+  const DataDesktop({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,23 +15,6 @@ class StudentsList extends StatelessWidget {
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            width: 323,
-            color: Colors.blue,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 63),
-                  child: SizedBox(
-                    width: 215,
-                    child: Image.asset(
-                      'assets/Logo.png', // Ensure correct image path
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
           Expanded(
             child: Padding(
               padding: const EdgeInsets.only(left: 87, top: 50, right: 87),
@@ -58,10 +38,7 @@ class StudentsList extends StatelessWidget {
                         () => GridView.builder(
                           gridDelegate:
                               SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount:
-                                MediaQuery.of(context).size.width > 600
-                                    ? 5
-                                    : 3, // Number of columns in the grid
+                            crossAxisCount: 4,
                             crossAxisSpacing: 5, // Spacing between columns
                             mainAxisSpacing: 5.0,
                           ),
@@ -71,9 +48,11 @@ class StudentsList extends StatelessWidget {
                             if (index == items.length) {
                               return GestureDetector(
                                   onTap: () {
-                                    context.pushNamed("createStudent");
+                                    router.go('/student');
                                   },
-                                  child: Container(width: MediaQuery.of(context).size.width > 600?216:111,
+                                  child: Container(
+                                    width: 224,
+                                    height: 219,
                                     decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(10),
                                         border: Border.all(
@@ -82,20 +61,29 @@ class StudentsList extends StatelessWidget {
                                       padding: const EdgeInsets.all(15),
                                       child: Stack(
                                         children: [
-
-                                          Align(alignment: Alignment.center,
-                                            child: Padding(
-                                              padding: const EdgeInsets.all(30),
-                                              child: Image.asset(width: 1000,
-                                                    'assets/add (1).png',
-                                                    fit: BoxFit.contain,
+                                          Positioned(
+                                            top: 27,
+                                            left: 35,
+                                            child: Column(
+                                              children: [
+                                                Image.asset(
+                                                  width: 100,
+                                                  height: 100,
+                                                  'assets/add (1).png',
+                                                  fit: BoxFit.contain,
+                                                ),
+                                                Padding(
+                                                  padding:
+                                                      const EdgeInsets.only(
+                                                          top: 8.0),
+                                                  child: Text(
+                                                    'Add New Student',
+                                                    style:
+                                                        TextStyle(fontSize: 16),
                                                   ),
-                                              ),
-                                          ),
-
-                                          Padding(
-                                            padding: const EdgeInsets.all(0),
-                                            child: Align( alignment: Alignment.bottomCenter,child: Text('Add New Student',style: TextStyle(fontSize: 16),)),
+                                                ),
+                                              ],
+                                            ),
                                           ),
                                         ],
                                       ),
